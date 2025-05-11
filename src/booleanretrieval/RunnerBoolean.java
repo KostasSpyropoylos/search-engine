@@ -71,9 +71,15 @@ public class RunnerBoolean {
 		// r.BooleanAnd(arFiles, index);
 
 		// ====== 4. Boolean Not ======
-		System.out.println(">>>>> Search A not B");
+		// System.out.println(">>>>> Search A or B");
 		Search s = new Search();
-		s.AnotB("the", "tanker", index);
+		// Integer[] res = s.AorB("the", "tanker", index);
+		// System.out.println("Number of DOCS: " + res.length);
+
+		System.out.println(">>>>> Search A not B");
+		Integer[] notResult = s.AnotB("the", "tanker", index);
+		System.out.println("Number of DOCS: " + notResult.length);
+
 		/*
 		 * // 5. Write the Inverted Index to DISK
 		 * index.write(sIndexFile);
