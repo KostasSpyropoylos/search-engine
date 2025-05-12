@@ -1,1 +1,2 @@
 https://medium.com/@masoud.xpress/query-processing-and-or-not-algorithms-explanation-and-implementation-in-java-3c7cac13d8d8
+https://medium.com/analytics-vidhya/boolean-retrieval-model-using-inverted-index-and-positional-index-2a9782bcec99
