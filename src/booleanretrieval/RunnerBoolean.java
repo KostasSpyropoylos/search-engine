@@ -52,6 +52,7 @@ public class RunnerBoolean {
 				System.out.println(
 						"Result: Document " + docIDs[i] + " file " + corpus.get(docIDs[i] - 1));
 		}
+		
 	}
 
 	public static void main(String[] args) {
@@ -64,6 +65,7 @@ public class RunnerBoolean {
 		// ====== 2. Build the Inverted Index ======
 		long l1 = System.currentTimeMillis();
 		InvertedIndex index = r.buildIndex(arFiles); // Build the Index
+		// index.write("index.ser");
 		long l2 = System.currentTimeMillis();
 		System.out.println((l2 - l1) / 1000 + " sec");
 		// ====== 3. Search the Inverted Index (Boolean retrieval) ======
@@ -76,8 +78,11 @@ public class RunnerBoolean {
 		// Integer[] res = s.AorB("the", "tanker", index);
 		// System.out.println("Number of DOCS: " + res.length);
 
-		System.out.println(">>>>> Search A not B");
-		Integer[] notResult = s.AnotB("the", "tanker", index);
+		// System.out.println(">>>>> Search A not B");
+		// Integer[] notResult = s.AnotB("the", "tanker", index);
+		// System.out.println("Number of DOCS: " + notResult.length);
+		System.out.println(">>>>> Search Not A ");
+		Integer[] notResult = s.NotA("tanker", index);
 		System.out.println("Number of DOCS: " + notResult.length);
 
 		/*

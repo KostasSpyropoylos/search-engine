@@ -1,6 +1,7 @@
 package booleanretrieval;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Search {
 
@@ -82,6 +83,27 @@ public class Search {
 		return (Integer[]) res.toArray(new Integer[res.size()]);
 	}
 
+	public Integer[] NotA(String aTerm, InvertedIndex index) {
+		ArrayList<Integer> listA = index.get(aTerm);
+
+		if (listA == null) {
+			listA = new ArrayList<>();
+		}
+
+		System.out.println("list A Size: " + listA.size());
+
+		HashSet<Integer> setA = new HashSet<>(listA);
+		ArrayList<Integer> res = new ArrayList<>();
+
+		for (Integer docID : index.getAllDocumentIDs()) {
+			if (!setA.contains(docID)) {
+				res.add(docID);
+			}
+		}
+
+		return res.toArray(new Integer[0]);
+	}
+
 	public Integer[] AnotB(String aTerm, String bTerm, InvertedIndex index) {
 		ArrayList<Integer> listA = index.get(aTerm);
 
@@ -90,7 +112,7 @@ public class Search {
 		if (listA == null || listB == null)
 			return null;
 		ArrayList<Integer> res = new ArrayList<Integer>();
-		// find the IDs that exist on either of the lists
+		// find the IDs that don't exist on the second list
 		for (int x : listA) {
 			if (!listB.contains(x)) {
 				res.add(x);
